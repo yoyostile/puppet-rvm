@@ -1,12 +1,12 @@
 
 class rvm::passenger($ruby_version, $version, $rvm_prefix) {
-    rvm_gem {
-        'passenger':
-            ruby_version => $ruby_version,
-            ensure => $version,
-            rvm_prefix => $rvm_prefix,
-            require => Rvm_system_ruby[$ruby_version];
-    }
+  rvm_gem {
+    "passenger":
+      ruby_version => $ruby_version,
+      ensure => $version,
+      rvm_prefix => $rvm_prefix,
+      require => Rvm_system_ruby[$ruby_version],
+  }
 }
 
 
