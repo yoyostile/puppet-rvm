@@ -1,12 +1,12 @@
 class rvm::passenger::apache(
-    $ruby_version,
-    $version,
-    $rvm_prefix = '/usr/local/',
-    $mininstances = '1',
-    $maxpoolsize = '6',
-    $poolidletime = '300',
-    $maxinstancesperapp = '0',
-    $spawnmethod = 'smart-lv2'
+  $ruby_version,
+  $version,
+  $rvm_prefix = '/usr/local/',
+  $mininstances = '1',
+  $maxpoolsize = '6',
+  $poolidletime = '300',
+  $maxinstancesperapp = '0',
+  $spawnmethod = 'smart-lv2'
 ) {
 
     include rvm::passenger::passenger-gem
