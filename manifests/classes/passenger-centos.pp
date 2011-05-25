@@ -1,4 +1,4 @@
-class rvm::passenger::apache::ubuntu {
+class rvm::passenger::apache::centos {
 
   # Dependencies
   if ! defined(Package["httpd"]) { package { "httpd": ensure => installed } }
