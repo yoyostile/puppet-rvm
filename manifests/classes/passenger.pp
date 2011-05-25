@@ -5,7 +5,7 @@ class rvm::passenger($ruby_version, $version, $rvm_prefix) {
       ruby_version => $ruby_version,
       ensure => $version,
       rvm_prefix => $rvm_prefix,
-      require => Rvm_system_ruby[$ruby_version],
+     # require => Rvm_system_ruby[$ruby_version],
   }
 }
 
