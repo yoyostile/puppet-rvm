@@ -1,4 +1,4 @@
-class rvm::passenger-gem {
+class rvm::passenger::gem {
   rvm_gem {
     "passenger":
       ruby_version => $ruby_version,

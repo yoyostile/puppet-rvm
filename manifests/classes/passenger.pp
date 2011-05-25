@@ -9,7 +9,7 @@ class rvm::passenger::apache(
   $spawnmethod = 'smart-lv2'
 ) {
 
-    include rvm::passenger::passenger-gem
+    include rvm::passenger::gem
 
     # TODO: How can we get the gempath automatically using the ruby version
     # Can we read the output of a command into a variable?
