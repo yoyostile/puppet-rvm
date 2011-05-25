@@ -11,13 +11,5 @@ class rvm::passenger::apache::centos {
         logoutput => 'on_failure',
         require => [Rvm_gem['passenger'], Package['httpd','httpd-devel','mod_ssl']];
   }
-  
-  file {
-    '/etc/httpd/passenger.load':
-      content => "LoadModule passenger_module ${gempath}/passenger-${version}/ext/apache2/mod_passenger.so",
-      ensure => file,
-      require => Exec['passenger-install-apache2-module'];
-  }
-  
 }
   
