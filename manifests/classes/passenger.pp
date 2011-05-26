@@ -8,7 +8,12 @@ class rvm::passenger::apache(
   $maxinstancesperapp = '0',
   $spawnmethod = 'smart-lv2'
 ) {
-
+    
+    case $operatingsystem {
+      Ubuntu: { include rvm::passenger::apache::ubuntu::pre }
+      CentOS: { include rvm::passenger::apache::centos::pre }
+    }
+    
     include rvm::passenger::gem
 
     # TODO: How can we get the gempath automatically using the ruby version
@@ -17,9 +22,8 @@ class rvm::passenger::apache(
     $gempath = "${rvm_prefix}rvm/gems/${ruby_version}/gems"
     $binpath = "${rvm_prefix}rvm/bin/"
 
-
     case $operatingsystem {
-      Ubuntu: { include rvm::passenger::apache::ubuntu }
-      CentOS: { include rvm::passenger::apache::centos }
+      Ubuntu: { include rvm::passenger::apache::ubuntu::post }
+      CentOS: { include rvm::passenger::apache::centos::post }
     }
 }
