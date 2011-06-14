@@ -8,14 +8,20 @@ class rvm::passenger::apache(
   $maxinstancesperapp = '0',
   $spawnmethod = 'smart-lv2'
 ) {
+    include rvm::passenger::gem
     
     case $operatingsystem {
       Ubuntu: { include rvm::passenger::apache::ubuntu::pre }
       CentOS: { include rvm::passenger::apache::centos::pre }
     }
     
-    include rvm::passenger::gem
-
+    class {
+      'rvm::passenger::gem':
+        ruby_version => $ruby_version,
+        version => $version,
+        rvm_prefix => $rvm_prefix
+    }
+    
     # TODO: How can we get the gempath automatically using the ruby version
     # Can we read the output of a command into a variable?
     # e.g. $gempath = `usr/local/bin/rvm ${ruby_version} exec rvm gemdir`
