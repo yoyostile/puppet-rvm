@@ -1,5 +1,3 @@
-require 'puppet/provider/package'
-
 Puppet::Type.type(:rvm_system_ruby).provide(:rvm) do
   desc "Ruby RVM support."
 
