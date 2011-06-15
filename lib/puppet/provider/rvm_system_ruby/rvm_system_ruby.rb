@@ -6,9 +6,7 @@ Puppet::Type.type(:rvm_system_ruby).provide(:rvm) do
   ensurable
   
   def create
-    puts "RUNNING???"
-    command = [command(:rvmcmd), "install", resource[:name]]
-    output = execute(command)
+    rvmcmd "install", resource[:name]
   end
 
   def destroy
