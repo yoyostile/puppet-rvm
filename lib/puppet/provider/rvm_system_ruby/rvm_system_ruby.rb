@@ -2,8 +2,11 @@ Puppet::Type.type(:rvm_system_ruby).provide(:rvm) do
   desc "Ruby RVM support."
 
   commands :rvmcmd => "/usr/local/rvm/bin/rvm"
-
+  
+  ensurable
+  
   def create
+    puts "RUNNING???"
     command = [command(:rvmcmd), "install", resource[:name]]
     output = execute(command)
   end
