@@ -3,8 +3,6 @@ Puppet::Type.type(:rvm_system_ruby).provide(:rvm) do
 
   commands :rvmcmd => "/usr/local/rvm/bin/rvm"
   
-  ensurable
-  
   def create
     rvmcmd "install", resource[:name]
   end
@@ -14,16 +12,15 @@ Puppet::Type.type(:rvm_system_ruby).provide(:rvm) do
   end
 
   def exists?
-    false
-    #command = [command(:rvmcmd), "list", "strings"]
-    #
-    #begin
-    #  execute(command).any? do |line|
-    #    line =~ Regexp.new(Regexp.escape(resource[:name]))
-    #  end
-    #rescue Puppet::ExecutionFailure => detail
-    #  raise Puppet::Error, "Could not list RVMs: #{detail}"
-    #end
+    command = [command(:rvmcmd), "list", "strings"]
+
+    begin
+      execute(command).any? do |line|
+        line =~ Regexp.new(Regexp.escape(resource[:name]))
+      end
+    rescue Puppet::ExecutionFailure => detail
+      raise Puppet::Error, "Could not list RVMs: #{detail}"
+    end
 
   end
 
