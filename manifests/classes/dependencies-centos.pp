@@ -23,4 +23,5 @@ class rvm::dependencies::centos {
   if ! defined(Package['libxslt-devel'])      { package { 'libxslt-devel':      ensure => installed } }
   if ! defined(Package['readline-devel'])      { package { 'readline-devel':      ensure => installed } }
   if ! defined(Package['patch'])      { package { 'patch':      ensure => installed } }
+  if ! defined(Package['git-core'])      { package { 'git-core':      ensure => installed } }
 }
